@@ -48,7 +48,18 @@ def make_report(portfolio, prices):
         rows.append(summary)
     return rows
         
-        
+def print_report(report):
+    #output
+    print('Total cost', total_cost)
+    print('Current value', current_value)
+    print('Gain/Loss', current_value - total_cost)
+    headers = ('Name', 'Shares', 'Price', 'Change')
+    print('%10s %10s %10s %10s' % headers)
+    dashes = ('----------', '----------', '----------', '----------')
+    print('%1s %1s %1s %1s' % dashes)
+    for row in report:
+        print('%10s %10d %10.2f %10.2f' % row)
+
 
 portfolio = read_portfolio('Data/portfolio.csv')
 prices    = read_prices('Data/prices.csv')
@@ -62,13 +73,4 @@ for s in portfolio:
     total_cost += s['shares'] * s['price']
     current_value += s['shares'] * prices[s['name']]
 
-#output
-print('Total cost', total_cost)
-print('Current value', current_value)
-print('Gain/Loss', current_value - total_cost)
-headers = ('Name', 'Shares', 'Price', 'Change')
-print('%10s %10s %10s %10s' % headers)
-dashes = ('----------', '----------', '----------', '----------')
-print('%1s %1s %1s %1s' % dashes)
-for row in report:
-    print('%10s %10d %10.2f %10.2f' % row)
+print_report(report)
