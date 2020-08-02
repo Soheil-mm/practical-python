@@ -37,13 +37,12 @@ def parse_csv(filename, select = None, types = None, has_headers = True, delimit
             records.append(record)
 
     return records
-
-records = parse_csv('Data/portfolio.csv', types=[str, int, float])
-print(records)
-records = parse_csv('Data/portfolio.csv', types=[str, int], select=['name', 'shares'])
-print(records)
-records = parse_csv('Data/prices.csv', types=[str, float], has_headers = False)
-print(records)
-records = parse_csv('Data/portfolio.csv', types=[str, int, float], delimiter=' ')
-print(records)
-
+if __name__ == "__main__":
+    records = parse_csv('Data/portfolio.csv', types=[str, int, float])
+    print(records)
+    records = parse_csv('Data/portfolio.csv', types=[str, int], select=['name', 'shares'])
+    print(records)
+    records = parse_csv('Data/prices.csv', types=[str, float], has_headers = False)
+    print(records)
+    records = parse_csv('Data/portfolio.csv', types=[str, int, float], delimiter=' ')
+    print(records)
